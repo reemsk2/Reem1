@@ -2,41 +2,54 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.storage.StorageReference;
 
 public class AddFoodActivity extends AppCompatActivity {
     private static final String TAG = "AddFoodActivity";
-    private EditText etName , etDesc , etAdress , etPhone;
+    private EditText etName , etDesc , etAddress , etPhone;
     private Spinner spFoods;
     private ImageView ivPhoto;
     private  FirebaseServices fbs;
+    StorageReference storageReference;
+    private Uri filePath;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_rest);
+
+        getSupportActionBar().hide();
         connectComponents();
     }
 
     private void connectComponents() {
         etName = findViewById(R.id.etNameAddRest);
         etDesc = findViewById(R.id.etDescriptionAddRest);
-        etAdress = findViewById(R.id.etAddressAddRest);
+        etAddress = findViewById(R.id.etAddressAddRest);
         etPhone = findViewById(R.id.etPhoneAddRest);
         spFoods = findViewById(R.id.spFoodsAddRest);
         ivPhoto = findViewById(R.id.ivPhotoAddRest);
         fbs = FirebaseServices.getInstance();
         spFoods.setAdapter(new ArrayAdapter<Foods>(this, android.R.layout.simple_list_item_1, Foods.values()));
+        storageReference = fbs.getStorage().getReference();
+
     }
 
     public void add(View view) {
@@ -44,12 +57,12 @@ public class AddFoodActivity extends AppCompatActivity {
         String name, description, address, phone, category, photo;
         name = etName.getText().toString();
         description = etDesc.getText().toString();
-        address = etAdress.getText().toString();
+        address = etAddress.getText().toString();
         phone = etPhone.getText().toString();
         category = spFoods.getSelectedItem().toString();
         if (ivPhoto.getDrawable() == null)
             photo = "no_image";
-        else photo = ivPhoto.getDrawable().toString();
+        else photo = storageReference.getDownloadUrl().toString();
 
         if (name.trim().isEmpty() || description.trim().isEmpty() || address.trim().isEmpty() ||
                 phone.trim().isEmpty() || category.trim().isEmpty() || photo.trim().isEmpty())
@@ -58,7 +71,7 @@ public class AddFoodActivity extends AppCompatActivity {
             return;
         }
 
-        Recipe rest = new Recipe(name, description, address, RestFood.valueOf(category), photo, phone);
+        Recipe rest = new Recipe(name, description, address, RestFoods.valueOf(category), photo, phone);
         fbs.getFirestore().collection("Recipe")
                 .add(rest)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -88,16 +101,26 @@ public class AddFoodActivity extends AppCompatActivity {
             if (resultCode == AddFoodActivity.RESULT_OK) {
                 if (data != null) {
                     try {
+                        filePath = data.getData();
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
+                        ivPhoto.setBackground(null);
+                        ivPhoto.setImageBitmap(bitmap);
+                        uploadImage();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
                 }
+
             } else if (resultCode == AddFoodActivity.RESULT_CANCELED)  {
                 Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
             }
         }
     }
+    private void uploadImage(){
+        if (filePath != null){
+            
+        }
+    }
 }
 
-}

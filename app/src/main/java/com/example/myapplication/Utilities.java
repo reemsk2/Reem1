@@ -3,6 +3,10 @@ package com.example.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 enum ErrorResult{}
+enum RestFoods
+{
+    BreakFast , Lunch , Dinner , DietFood , Salads , Desserts;
+}
 public class Utilities {
     private static Utilities instance;
     private int id;

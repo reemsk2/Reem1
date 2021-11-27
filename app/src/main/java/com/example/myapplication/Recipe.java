@@ -1,16 +1,59 @@
 package com.example.myapplication;
 
-enum Foods
-{
-    BreakFast , Lunch , Dinner , DietFood , Salads , Desserts;
-}
-
 
 public class Recipe {
+    private String address;
+    private RestFoods category;
+    private String phone;
     private String photo;
     private String name;
-    private String description;
-    private String instruction;
+
+    public Recipe(String name, String description, String address, RestFoods restFoods, String photo, String phone) {
+
+    }
+    public Recipe(String address , String photo , String phone , String description , String name , RestFoods category){
+        this.description = description;
+        this.name = name;
+        this.photo = photo;
+        this.address = address;
+        this.category = category;
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "address='" + address + '\'' +
+                ", category=" + category +
+                ", phone='" + phone + '\'' +
+                ", photo='" + photo + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public RestFoods getCategory() {
+        return category;
+    }
+
+    public void setCategory(RestFoods category) {
+        this.category = category;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getPhoto() {
         return photo;
@@ -28,49 +71,4 @@ public class Recipe {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getInstruction() {
-        return instruction;
-    }
-
-    public void setInstruction(String instruction) {
-        this.instruction = instruction;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "photo='" + photo + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", instruction='" + instruction + '\'' +
-                ", rating='" + rating + '\'' +
-                '}';
-    }
-
-    public Recipe(String photo, String name, String description, String instruction, String rating) {
-        this.photo = photo;
-        this.name = name;
-        this.description = description;
-        this.instruction = instruction;
-        this.rating = rating;
-    }
-
-    private String rating;
-
-}
