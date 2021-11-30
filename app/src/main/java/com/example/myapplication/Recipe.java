@@ -7,10 +7,8 @@ public class Recipe {
     private String phone;
     private String photo;
     private String name;
+    private String description;
 
-    public Recipe(String name, String description, String address, RestFoods restFoods, String photo, String phone) {
-
-    }
     public Recipe(String address , String photo , String phone , String description , String name , RestFoods category){
         this.description = description;
         this.name = name;
@@ -20,16 +18,6 @@ public class Recipe {
         this.phone = phone;
     }
 
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "address='" + address + '\'' +
-                ", category=" + category +
-                ", phone='" + phone + '\'' +
-                ", photo='" + photo + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 
     public String getAddress() {
         return address;
@@ -67,8 +55,26 @@ public class Recipe {
         return name;
     }
 
+    public String getDescription() {return description; }
+
+    public void setDescription(String description) {this.description = description;}
+
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "address='" + address + '\'' +
+                ", category=" + category +
+                ", phone='" + phone + '\'' +
+                ", photo='" + photo + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }}
+
+
+
 
 
