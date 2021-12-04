@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ public class AddFoodActivity extends AppCompatActivity {
     private static final String TAG = "AddFoodActivity";
     private EditText etName, etDesc, etAddress, etPhone;
     private Spinner spFoods;
-    private View ivPhoto;
+    private ImageView ivPhoto;
     private FirebaseServices fbs;
     StorageReference storageReference;
     private Uri filePath;
@@ -59,8 +60,8 @@ public class AddFoodActivity extends AppCompatActivity {
     }
 
     public void add(View view) {
-
-        String name, description, address, phone, category, photo;
+           // CHECK IF ANY FIELD IS EMPTY:
+        String address , photo , phone , description , name , category;
         name = etName.getText().toString();
         description = etDesc.getText().toString();
         address = etAddress.getText().toString();
@@ -76,7 +77,7 @@ public class AddFoodActivity extends AppCompatActivity {
             return;
         }
 
-        Recipe rest = new Recipe(name, description, address, RestFoods.valueOf(category), photo, phone);
+        Recipe rest = new Recipe(address, photo , phone , description , name , RestFoods.valueOf(category));
         fbs.getFirestore().collection("Recipe")
                 .add(rest)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -99,7 +100,6 @@ public class AddFoodActivity extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), 40);
     }
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 40) {
@@ -122,23 +122,57 @@ public class AddFoodActivity extends AppCompatActivity {
     }
 
 
-    private void uploadImage() {
-        if (filePath != null) {
-            ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading...");
-            progressDialog.show();
-            StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
-            ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    progressDialog.dismiss();
-                    Toast.makeText(AddFoodActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-            ref.putFile(filePath).addOnSuccessListener(
-                    new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        // Progress Listener for loading
-                        // percentage on the dialog box
+        private void uploadImage(){
+    if (filePath != null) {
+
+        ProgressDialog progressDialog
+                = new ProgressDialog(this);
+        progressDialog.setTitle("Uploading...");
+        progressDialog.show();
+
+        StorageReference ref
+                = storageReference
+                .child(
+                        "images/"
+                                + UUID.randomUUID().toString());
+
+                ref.putFile(filePath).addOnSuccessListener(
+                    new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(
+                                UploadTask.TaskSnapshot taskSnapshot)
+                        {
+
+
+                            progressDialog.dismiss();
+                            Toast
+                                    .makeText(AddFoodActivity.this,
+                                            "Image Uploaded!!",
+                                            Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@androidx.annotation.NonNull Exception e)
+                    {
+
+                        // Error, Image not uploaded
+                        progressDialog.dismiss();
+                        Toast
+                                .makeText(AddFoodActivity.this,
+                                        "Failed " + e.getMessage(),
+                                        Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                })
+                .addOnProgressListener(
+                        new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                            // Progress Listener for loading
+                            // percentage on the dialog box
+
                         @Override
                         public void onProgress(
                                 UploadTask.TaskSnapshot taskSnapshot)
@@ -152,9 +186,9 @@ public class AddFoodActivity extends AppCompatActivity {
                                             + (int) progress + "%");
                         }
 
-                    };
+                    });
 
-        }
+            }
 
 
     }
