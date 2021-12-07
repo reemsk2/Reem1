@@ -19,7 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class AllRecipeActivity extends AppCompatActivity {
+public class AllRecipesActivity extends AppCompatActivity {
     private RecyclerView rvAllRecipe;
     AdapterRecipe adapter;
     FirebaseServices fbs;
