@@ -36,7 +36,7 @@ public class AllRecipesActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.rvRecipesAllRecipe);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AdapterRecipe(this , recipes);
-        recyclerView.setAdapter(adapter);
+        adapter.setAdapter(adapter);
     }
     private void readData() {
         fbs.getFirestore().collection("recipes")

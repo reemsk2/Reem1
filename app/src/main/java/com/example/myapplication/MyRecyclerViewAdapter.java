@@ -49,7 +49,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.tvRecipeallRecipe);
+            myTextView = itemView.findViewById(R.id.tvRecipeAllRecipe);
             itemView.setOnClickListener(this);
         }
 
@@ -75,4 +75,3 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 }
 
-}
