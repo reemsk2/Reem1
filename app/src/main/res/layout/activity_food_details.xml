@@ -4,6 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D1E6F8"
     tools:context=".FoodDetailsActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="755dp"
+        android:layout_height="323dp"
+        android:background="#AAC9EC"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/RecipeName"
+        android:layout_width="245dp"
+        android:layout_height="49dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#F3F3F3"
+        android:drawableTint="@color/teal_200"
+        android:foregroundTint="#D15858"
+        android:rotationX="4"
+        android:text="Recipe Name"
+        tools:layout_editor_absoluteX="255dp"
+        tools:layout_editor_absoluteY="323dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="752dp"
+        android:layout_height="758dp"
+        android:background="#D5E3F4"
+        android:text="Recipe Details"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="408dp" />
 
 </android.support.constraint.ConstraintLayout>
