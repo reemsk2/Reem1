@@ -30,14 +30,6 @@ public class AllRecipesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_recipe);
         fbs = FirebaseServices.getInstance();
-        recipes = new ArrayList<Recipe>();
-        readData();
-
-        RecyclerView recyclerView = findViewById(R.id.rvRecipesAllRecipe);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AdapterRecipe(this , recipes);
-        adapter.setAdapter(adapter);
-    }
     private void readData() {
         fbs.getFirestore().collection("recipes")
                 .get()

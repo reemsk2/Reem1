@@ -40,7 +40,7 @@ public class AddFoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_rest);
+        setContentView(R.layout.activity_add_recipe);
 
         getSupportActionBar().hide();
         connectComponents();

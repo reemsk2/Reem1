@@ -13,13 +13,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class SignupActivity2 extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private String etConfirmPassword;
     private FirebaseAuth auth;
 
-    public SignupActivity2(EditText etUsername, EditText etPassword, String etConfirmPassword, FirebaseAuth auth) {
+    public SignupActivity(EditText etUsername, EditText etPassword, String etConfirmPassword, FirebaseAuth auth) {
         this.etUsername = etUsername;
         this.etPassword = etPassword;
         this.etConfirmPassword = etConfirmPassword;
@@ -57,7 +57,7 @@ public void signup (View view){
                     } else {
 
 
-                        Toast.makeText(SignupActivity2.this, "Username or password is empty!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignupActivity.this, "Username or password is empty!", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
