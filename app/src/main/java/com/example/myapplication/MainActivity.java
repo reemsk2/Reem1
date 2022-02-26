@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,15 +20,23 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
     private FirebaseAuth auth;
+    private Utilities utils;
+    private FirebaseServices fbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        connectComponent();
+    }
+    private void connectComponent() {
         etUsername = findViewById(R.id.etUsernameMain);
         etPassword = findViewById(R.id.etPasswordMain);
-        auth = FirebaseAuth.getInstance();
+        utils = Utilities.getInstance();
+        fbs = FirebaseServices.getInstance();
     }
+
 
 
     public void login(View view) {
@@ -140,7 +149,24 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+    public void gotoSignup(View view) {
+        Intent i = new Intent(this, SignupActivity.class);
+        startActivity(i);
+    }
+
+    public void gotoAddRest(View view) {
+        Intent i = new Intent(this, AddFoodActivity.class);
+        startActivity(i);
+    }
+
+    public void gotoAllRests(View view) {
+
+        Intent i = new Intent(this, AllRecipesActivity.class);
+        startActivity(i);
+    }
+
 }
+
 
 
 
