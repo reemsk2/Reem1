@@ -13,8 +13,8 @@ import com.google.firebase.storage.StorageReference;
 
 public class RecipeDetailsActivity extends AppCompatActivity
 {
+
     private EditText etName, etDesc, etAddress, etPhone;
-    private Spinner spFoods;
     private ImageView ivPhoto;
     private FirebaseServices fbs;
     StorageReference storageReference;
