@@ -23,7 +23,7 @@ import java.util.List;
 
 public class AllRecipesActivity extends AppCompatActivity {
     private RecyclerView rvAllRecipe;
-    AdapteRecipe adapter;
+    AdapterRecipe adapter;
     FirebaseServices fbs;
     ArrayList<Recipe> recipes;
     MyCallback myCallback;
@@ -33,17 +33,18 @@ public class AllRecipesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_recipe);
         fbs = FirebaseServices.getInstance();
-        recipes = new ArrayList<>(Recipe);
+        recipes = new ArrayList<Recipe>();
         readData();
         myCallback = new MyCallback() {
             @Override
             public void onCallback(List<Recipe> restsList) {
                 RecyclerView recyclerView = findViewById(R.id.rvRecipesAllRecipe);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                adapter = new AdapteRecipe(getApplicationContext(), recipes);
+                adapter = new AdapterRecipe(getApplicationContext(), recipes);
                 recyclerView.setAdapter(adapter);
             }
         };
+    }
 
 
         private void readData(){
@@ -68,4 +69,6 @@ public class AllRecipesActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "error reading!" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
-    }}
+    }
+
+}

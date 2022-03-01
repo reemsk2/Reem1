@@ -27,7 +27,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.UUID;
 
-public class AddFoodActivity extends AppCompatActivity {
+public class AddRecipeActivity extends AppCompatActivity {
     private static final String TAG = "AddFoodActivity";
     private EditText etName, etDesc, etAddress, etPhone;
     private Spinner spFoods;
@@ -146,7 +146,7 @@ public class AddFoodActivity extends AppCompatActivity {
 
                             progressDialog.dismiss();
                             Toast
-                                    .makeText(AddFoodActivity.this,
+                                    .makeText(AddRecipeActivity.this,
                                             "Image Uploaded!!",
                                             Toast.LENGTH_SHORT)
                                     .show();
@@ -161,7 +161,7 @@ public class AddFoodActivity extends AppCompatActivity {
                         // Error, Image not uploaded
                         progressDialog.dismiss();
                         Toast
-                                .makeText(AddFoodActivity.this,
+                                .makeText(AddRecipeActivity.this,
                                         "Failed " + e.getMessage(),
                                         Toast.LENGTH_SHORT)
                                 .show();

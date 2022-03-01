@@ -3,6 +3,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.constraint.solver.ArrayLinkedVariables;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,38 +11,42 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
 
-public class AdapteRecipe extends RecyclerView.Adapter<AdapteRecipe.ViewHolder> {
+
+public class AdapterRecipe extends RecyclerView.Adapter<AdapterRecipe.ViewHolder> {
 
     private List<Recipe> mData;
     private LayoutInflater mInflater;
     private Context context;
-    private final AdapteRecipe.ItemClickListener mClickListener = new ItemClickListener() {
+
+    private AdapterRecipe.ItemClickListener mClickListener = new ItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
             Recipe recipe = mData.get(position);
-            Intent i new Intent(context, RecipeDetailsActivity.class);
+            Intent i = new Intent(context, RecipeDetailsActivity.class);
             i.putExtra("recipe", recipe);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
 
         }
     };
+    private ArrayLinkedVariables Picasso;
 
-    AdapteRecipe(Context context, List<Recipe> data) {
+    public AdapterRecipe(Context context, List<Recipe> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.context = context;
     }
 
     @Override
-    public AdapteRecipe.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.row, parent, false);
-        return new AdapteRecipe.ViewHolder(view);
+    public AdapterRecipe.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.row_recipe, parent, false);
+        return new AdapterRecipe.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(AdapteRecipe.ViewHolder holder, int position) {
+    public void onBindViewHolder(AdapterRecipe.ViewHolder holder, int position) {
         Recipe recipe = mData.get(position);
         holder.tvName.setText(recipe.getName());
         Picasso.get().load(recipe.getPhoto()).into(holder.ivPhoto);
@@ -76,7 +81,7 @@ public class AdapteRecipe extends RecyclerView.Adapter<AdapteRecipe.ViewHolder> 
     }
 
     // allows clicks events to be caught
-    void setClickListener(AdapteRecipe.ItemClickListener itemClickListener) {
+    void setClickListener(AdapterRecipe.ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 

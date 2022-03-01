@@ -15,8 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Locale;
-
 public class MainActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
     private FirebaseAuth auth;
@@ -155,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotoAddRest(View view) {
-        Intent i = new Intent(this, AddFoodActivity.class);
+        Intent i = new Intent(this, AddRecipeActivity.class);
         startActivity(i);
     }
 

@@ -3,4 +3,9 @@
     <item name="etUsernameMain" type="id" />
     <item name="etPasswordMain" type="id" />
     <item name="etConfirmPasswordMain" type="id" />
+    <item name="etNameRecipeDetails" type="id" />
+    <item name="etDescRecipeDetails" type="id" />
+    <item name="etAddressRecipeDetails" type="id" />
+    <item name="etPhoneRecipeDetails" type="id" />
+    <item name="ivPhotoRecipeDetails" type="id" />
 </resources>
