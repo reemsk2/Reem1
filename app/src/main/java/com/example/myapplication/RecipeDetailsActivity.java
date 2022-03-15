@@ -2,10 +2,10 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.solver.ArrayLinkedVariables;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.solver.ArrayLinkedVariables;
 
 public class RecipeDetailsActivity extends AppCompatActivity
 {
@@ -27,7 +27,7 @@ public class RecipeDetailsActivity extends AppCompatActivity
         etDesc.setText(Recipe.getDesc());
         etAddress.setText(Recipe.getAdress());
         etPhone.setText(Recipe.getPhone());
-        Picasso.get().load(Recipe.getPhoto()).into(ivPhoto);
+        //Picasso.get().load(Recipe.getPhoto()).into(ivPhoto);
 
     }
     private void connectComponents() {

@@ -10,13 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".AllRecipeActivity"
+            android:name=".AllRecipesActivity"
             android:exported="true" />
         <activity
-            android:name=".AddRest"
-            android:exported="true" />
-        <activity
-            android:name=".ImageView"
+            android:name=".AddRecipeActivity"
             android:exported="true" />
         <activity
             android:name=".SignupActivity"

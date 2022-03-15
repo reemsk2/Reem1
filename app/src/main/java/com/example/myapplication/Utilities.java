@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 enum ErrorCodes{
     IncorrectAuth, FieldsEmpty, True, False
 }

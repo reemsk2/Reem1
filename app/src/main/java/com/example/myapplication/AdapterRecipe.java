@@ -3,12 +3,13 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.constraint.solver.ArrayLinkedVariables;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.constraintlayout.solver.ArrayLinkedVariables;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class AdapterRecipe extends RecyclerView.Adapter<AdapterRecipe.ViewHolder
     public void onBindViewHolder(AdapterRecipe.ViewHolder holder, int position) {
         Recipe recipe = mData.get(position);
         holder.tvName.setText(recipe.getName());
-        Picasso.get().load(recipe.getPhoto()).into(holder.ivPhoto);
+        //Picasso.get().load(recipe.getPhoto()).into(holder.ivPhoto);
     }
     @Override
     public int getItemCount() {
