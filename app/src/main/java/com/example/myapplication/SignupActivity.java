@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,49 +17,53 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignupActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
-    private String etConfirmPassword;
-    private FirebaseAuth auth;
-
-    public SignupActivity(EditText etUsername, EditText etPassword, String etConfirmPassword, FirebaseAuth auth) {
-        this.etUsername = etUsername;
-        this.etPassword = etPassword;
-        this.etConfirmPassword = etConfirmPassword;
-        this.auth = auth;
-    }
-
+    private FirebaseServices fbs;
+    private Utilities utils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup2);
+        setContentView(R.layout.activity_signup);
+
+        connectComponent();
     }
+
+    private void connectComponent() {
+        etUsername = findViewById(R.id.etUsernameSignup);
+        etPassword = findViewById(R.id.etPasswordSignup);
+        utils = Utilities.getInstance();
+        fbs = FirebaseServices.getInstance();
+    }
+
+
 
 
 public void signup (View view){
-        //todo 1- get data from screen
-    String username = etUsername.getText().toString();
+
+        String username = etUsername.getText().toString();
     String password = etPassword.getText().toString();
-    String confirmPassword = etConfirmPassword;
-    if (username.trim().isEmpty() || password.trim().isEmpty() || confirmPassword.trim().isEmpty()){
+
+
+    if (username.trim().isEmpty() || password.trim().isEmpty() ){
         Toast.makeText(this, "Username or password is missing!", Toast.LENGTH_SHORT).show();
         return;
     }
-    if (!password.equals(confirmPassword)){
-        Toast.makeText(this, "Password do not match!!", Toast.LENGTH_SHORT).show();
+    if (!utils.validateEmail(username) || !utils.validatePassword(password))
+    {
+        Toast.makeText(this, "Incorrect email or password!", Toast.LENGTH_SHORT).show();
         return;
     }
-    // TODO: 3- Check username and password with Firebase Authentication
-    auth.createUserWithEmailAndPassword(username, password)
+
+    fbs.getAuth().createUserWithEmailAndPassword(username, password)
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        // TODO: commands if successful
+                        Intent i = new Intent(SignupActivity.this, AllRecipesActivity.class);
+                        startActivity(i);
                     } else {
+                        Toast.makeText(SignupActivity.this, R.string.err_firebase_general, Toast.LENGTH_SHORT).show();
 
-
-                        Toast.makeText(SignupActivity.this, "Username or password is empty!", Toast.LENGTH_SHORT).show();
-                        return;
                     }
                 }
             });

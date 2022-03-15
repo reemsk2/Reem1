@@ -8,4 +8,6 @@
     <item name="etAddressRecipeDetails" type="id" />
     <item name="etPhoneRecipeDetails" type="id" />
     <item name="ivPhotoRecipeDetails" type="id" />
+    <item name="etUsernameSignup" type="id" />
+    <item name="etPasswordSignup" type="id" />
 </resources>

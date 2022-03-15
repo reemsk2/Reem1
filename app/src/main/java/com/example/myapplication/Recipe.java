@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Recipe implements Serializable {
     private static String Name;
+    private static String name;
     private String address;
     private String phone;
     private String photo;
@@ -31,7 +32,7 @@ public class Recipe implements Serializable {
     }
 
     public static Object getPhoto() {
-        return null;
+        return getName();
     }
 
 

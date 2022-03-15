@@ -38,4 +38,13 @@
         tools:layout_editor_absoluteX="50dp"
         tools:layout_editor_absoluteY="204dp" />
 
+    <Button
+        android:id="@+id/btnSignupSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="signup"
+        android:text="Signup"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="269dp" />
+
 </android.support.constraint.ConstraintLayout>
