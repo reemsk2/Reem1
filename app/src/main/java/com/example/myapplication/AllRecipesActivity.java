@@ -44,7 +44,7 @@ public class AllRecipesActivity extends AppCompatActivity {
     }
 
 
-        private void readData(){
+        private void readData() {
             try {
 
                 fbs.getFirestore().collection("recipes")
@@ -66,6 +66,5 @@ public class AllRecipesActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "error reading!" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
-
 }
 
