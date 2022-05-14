@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+package android.support.test
 import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Test;
