@@ -14,8 +14,11 @@
         android:inputType="textPersonName"
         android:onClick="signup"
         android:text="Name"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="51dp" />
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -25,8 +28,10 @@
         android:inputType="textPassword"
         android:onClick="signup"
         android:text="password"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="136dp" />
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etConfirmPassword"
@@ -35,8 +40,10 @@
         android:ems="10"
         android:inputType="numberPassword"
         android:onClick="signup"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="204dp" />
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSignupSignup"
@@ -44,7 +51,9 @@
         android:layout_height="wrap_content"
         android:onClick="signup"
         android:text="Signup"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="269dp" />
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
