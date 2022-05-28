@@ -27,7 +27,7 @@ public class RecipeDetailsActivity extends AppCompatActivity
         etDesc.setText(Recipe.getDesc());
         etAddress.setText(Recipe.getAdress());
         etPhone.setText(Recipe.getPhone());
-        //Picasso.get().load(Recipe.getPhoto()).into(ivPhoto);
+       // Picasso.get().load(Recipe.getPhoto()).into(ivPhoto);
 
     }
     private void connectComponents() {
