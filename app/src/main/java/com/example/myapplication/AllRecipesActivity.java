@@ -42,7 +42,7 @@ public class AllRecipesActivity extends AppCompatActivity {
             }
         };
     }
-
+0
 
         private void readData() {
             try {
