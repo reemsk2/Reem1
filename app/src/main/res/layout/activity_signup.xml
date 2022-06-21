@@ -9,70 +9,6 @@
     tools:context=".SignupActivity">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignparentTop="true">
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="30dp"
-           android:orientation="vertical"
-           android:padding="20dp">
-           <RelativeLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-               <TextView
-                   style="@style/viewParent.headerText.NoMode"
-                   android:layout_alignParentLeft="true"
-                   android:layout_centerVertical="true"
-                   android:text="Here's/nyour firt/nstep with/nus!"
-               <ImageView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentTop="true"
-                   android:layout_alignParentRight="true"
-                   android:scr="@drawable/ic_login_hero"/>
-
-           </RelativeLayout>
-           <androidx.cardview.widget.CardView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="10dp"
-               app:cardCornerRadius="10dp">
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_margin="10dp"
-                   android:orientation="vertical">
-                   <com.google.android.material.textfield.TextInputLayout
-                       android:id="@+id/textInputName"
-                       style="@style/parent"
-                       android:layout_marginTop="@dimen/loginViewsMargin">
-
-                       <EditText
-                          android:id="@+id/editTextName"
-                         style="@style/modifiedEditText"
-                           android:hint="Name"
-                           android:inputType="textPersonName"
-                           android:maxLines="1"/>
-
-                   </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-
-               </LinearLayout>
-
-           </androidx.cardview.widget.CardView>
-
-
-       </LinearLayout>
-
-    </ScrollView>
-
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="308dp"
@@ -90,39 +26,23 @@
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184" />
+        app:layout_constraintVertical_bias="0.085" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="311dp"
         android:layout_height="68dp"
+        android:layout_marginTop="156dp"
         android:background="@color/purple_200"
         android:backgroundTint="#00BCD4"
         android:ems="10"
         android:inputType="textPassword"
         android:onClick="signup"
         android:text="password"
-        app:layout_constraintBottom_toTopOf="@+id/etConfirmPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
-
-    <EditText
-        android:id="@+id/etConfirmPassword"
-        android:layout_width="363dp"
-        android:layout_height="56dp"
-        android:background="@color/teal_200"
-        android:backgroundTint="#00BCD4"
-        android:ems="10"
-        android:inputType="numberPassword"
-        android:onClick="signup"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSignupSignup"
@@ -136,5 +56,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.782" />
+
 
 </android.support.constraint.ConstraintLayout>
