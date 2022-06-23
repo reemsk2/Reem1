@@ -10,4 +10,12 @@
     <item name="ivPhotoRecipeDetails" type="id" />
     <item name="etUsernameSignup" type="id" />
     <item name="etPasswordSignup" type="id" />
+    <item name="miSettings" type="id" />
+    <item name="miProfile" type="id" />
+    <item name="etNameAddRecipe" type="id" />
+    <item name="etDescriptionAddRecipe" type="id" />
+    <item name="etAddressAddRecipe" type="id" />
+    <item name="etPhoneAddRecipe" type="id" />
+    <item name="spFoodsAddRecipe" type="id" />
+    <item name="ivPhotoAddRecipe" type="id" />
 </resources>

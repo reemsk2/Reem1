@@ -3,9 +3,13 @@ package com.example.myapplication;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +20,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class AllRecipesActivity extends AppCompatActivity {
@@ -41,10 +47,47 @@ public class AllRecipesActivity extends AppCompatActivity {
                 recyclerView.setAdapter(adapter);
             }
         };
+
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setTitle("RecipeApp");
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            //case R.id.miSearch:
+            // User chose the "Settings" item, show the app settings UI...
+            //return true;
+
+            case R.id.miProfile:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                return true;
+
+            case R.id.miSettings:
+
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 
-        private void readData() {
+
+    private void readData() {
             try {
 
                 fbs.getFirestore().collection("recipes")
@@ -58,10 +101,11 @@ public class AllRecipesActivity extends AppCompatActivity {
                                     }
                                     myCallback.onCallback(recipes);
                                 } else {
-                                    Log.e("AllRestActivity: readData()", "Error getting documents.", task.getException());
+                                    Log.e("AllRecipesActivity: readData()", "Error getting documents.", task.getException());
                                 }
                             }
                         });
+
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "error reading!" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }

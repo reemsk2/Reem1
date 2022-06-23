@@ -36,6 +36,8 @@ public class AddRecipeActivity extends AppCompatActivity {
     private FirebaseServices fbs;
     StorageReference storageReference;
     private Uri filePath;
+    private String refAfterSuccessfullUpload = null;
+
 
 
     @Override
@@ -48,12 +50,12 @@ public class AddRecipeActivity extends AppCompatActivity {
     }
 
     private void connectComponents() {
-        etName = findViewById(R.id.etNameAddRest);
-        etDesc = findViewById(R.id.etDescriptionAddRest);
-        etAddress = findViewById(R.id.etAddressAddRest);
-        etPhone = findViewById(R.id.etPhoneAddRest);
-        spFoods = findViewById(R.id.spFoodsAddRest);
-        ivPhoto = findViewById(R.id.ivPhotoAddRest);
+        etName = findViewById(R.id.etNameAddRecipe);
+        etDesc = findViewById(R.id.etDescriptionAddRecipe);
+        etAddress = findViewById(R.id.etAddressAddRecipe);
+        etPhone = findViewById(R.id.etPhoneAddRecipe);
+        spFoods = findViewById(R.id.spFoodsAddRecipe);
+        ivPhoto = findViewById(R.id.ivPhotoAddRecipe);
         fbs = FirebaseServices.getInstance();
         spFoods.setAdapter(new ArrayAdapter<RestFoods>(this, android.R.layout.simple_list_item_1, RestFoods.values()));
         storageReference = fbs.getStorage().getReference();

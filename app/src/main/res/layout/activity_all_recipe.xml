@@ -23,6 +23,7 @@
         android:id="@+id/rvRecipesAllRecipe"
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:background="#00BCD4"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp" />
 </android.support.constraint.ConstraintLayout>
