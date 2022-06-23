@@ -1,11 +1,16 @@
 package com.example.myapplication;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -16,24 +21,68 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
     private FirebaseAuth auth;
     private Utilities utils;
     private FirebaseServices fbs;
+    Button openDialog;
+    TextView infoTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        openDialog = findViewById(R.id.open_dialog);
+        infoTv = findViewById(R.id.info_tv);
+        openDialog.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View view) {
+
+                                          }
+                                      });
+                getSupportActionBar().hide();
         connectComponent();
+    }
+    void showCustomDialog(){
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.custom_dialog);
+        final EditText nameEt = dialog.findViewById(R.id.name_et);
+        final EditText ageEt = dialog.findViewById(R.id.age_et);
+        final CheckBox termsCb = dialog.findViewById(R.id.terms_cb);
+        Button submitButton = dialog.findViewById(R.id.submit_button);
+
+        submitButton.setOnClickListener(view -> ){
+            String name = nameEt.getText().toString();
+            String age = ageEt.getText().toString();
+            Boolean hasAccepted = termsCb.isChecked();
+            populateInfoTv(name,age,hasAccepted);
+            dialog.dismiss();
+
+
+        }
+        dialog.show();
+
+
+    }
+    void populateInfoTv(String name,String age,Boolean hasAcceptedTerms){
+        infoTv.serVisibility(View.VISIBLE);
+        String acceptedText = "have";
+        if (!hasAcceptedTerms){
+            acceptedText="have not";
+        }
+        infoTv.setText(String.format(getString(R.string.info),name , age , acceptedText));
     }
 
 
+
     private void connectComponent() {
-        etUsername = findViewById(R.id.etUsernameMain);
-        etPassword = findViewById(R.id.etPasswordMain);
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
         utils = Utilities.getInstance();
         fbs = FirebaseServices.getInstance();
     }
