@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#059169"
-    tools:context=".SignupActivity">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -23,18 +23,16 @@
         android:id="@+id/etUsernameMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
         android:layout_marginTop="139dp"
-        android:layout_marginEnd="1dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:text="Username"
-        app:layout_constraintBottom_toTopOf="@+id/etPasswordMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    5<EditText
         android:id="@+id/etPasswordMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,6 +58,20 @@
         app:layout_constraintTop_toBottomOf="@+id/etPasswordMain" />
 
     <Button
+        android:id="@+id/btnAllRecipeMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="373dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="gotoAllRecipes"
+        android:text="All Recipes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordMain">
+
+    </Button>
+    <Button
         android:id="@+id/btnSignupMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,8 +79,8 @@
         android:layout_marginEnd="61dp"
         android:layout_marginBottom="46dp"
         android:backgroundTint="#034545"
-        android:onClick="signup"
-        android:text="sign up"
+        android:onClick="gotoSignup"
+        android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
