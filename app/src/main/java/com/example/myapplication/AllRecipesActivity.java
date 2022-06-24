@@ -1,11 +1,13 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -110,5 +112,11 @@ public class AllRecipesActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "error reading!" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
+
+    public void gotoAddRecipe(View view) {
+        Intent i = new Intent(this, AddRecipeActivity.class);
+        startActivity(i);
+    }
+
 }
 

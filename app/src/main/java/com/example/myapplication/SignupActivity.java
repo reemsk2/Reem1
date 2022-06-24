@@ -17,7 +17,6 @@ import com.google.firebase.auth.AuthResult;
 public class SignupActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
-    private EditText etConfirmPasswordMain;
     private FirebaseServices fbs;
     private Utilities utils;
 
@@ -32,7 +31,6 @@ public class SignupActivity extends AppCompatActivity {
     private void connectComponent() {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
-        etConfirmPasswordMain = findViewById(R.id.etConfirmPasswordMain);
         utils = Utilities.getInstance();
         fbs = FirebaseServices.getInstance();
     }
@@ -42,14 +40,17 @@ public void signup (View view){
 
         String username = etUsername.getText().toString();
     String password = etPassword.getText().toString();
-    String confirmpassword = etConfirmPasswordMain.getText().toString();
 
 
     if (username.trim().isEmpty() || password.trim().isEmpty() ){
         Toast.makeText(this, "Username or password is missing!", Toast.LENGTH_SHORT).show();
         return;
     }
-
+    if (!utils.validateEmail(username) || !utils.validatePassword(password))
+    {
+        Toast.makeText(this, "Incorrect email or password!", Toast.LENGTH_SHORT).show();
+        return;
+    }
 
     fbs.getAuth().createUserWithEmailAndPassword(username, password)
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

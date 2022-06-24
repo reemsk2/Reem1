@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#08574F"
     tools:context=".AddRecipeActivity">
 
     <EditText
-        android:id="@+id/etNameAddRest"
+        android:id="@+id/etNameAddRecipe"
         android:layout_width="409dp"
         android:layout_height="99dp"
         android:ems="10"
@@ -18,61 +19,32 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <EditText
-        android:id="@+id/etDescriptionAddRest"
+        android:id="@+id/etDescriptionAddRecipe"
         android:layout_width="410dp"
         android:layout_height="99dp"
         android:ems="10"
         android:hint="recipe description"
         android:inputType="textPersonName"
         android:text="Description:"
-        app:layout_constraintBottom_toTopOf="@+id/etAddressAddRest"
-        tools:layout_editor_absoluteX="1dp" />
-
-    <EditText
-        android:id="@+id/etAddressAddRest"
-        android:layout_width="407dp"
-        android:layout_height="66dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Adress:"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="192dp" />
-
-    <EditText
-        android:id="@+id/etPhoneAddRest"
-        android:layout_width="409dp"
-        android:layout_height="86dp"
-        android:ems="10"
-        android:hint="Phone"
-        android:inputType="phone"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="347dp" />
-
-    <Spinner
-        android:id="@+id/spFoodsAddRest"
-        android:layout_width="405dp"
-        android:layout_height="89dp"
-        app:layout_constraintBottom_toTopOf="@+id/etPhoneAddRest"
-        app:layout_constraintTop_toBottomOf="@+id/etAddressAddRest"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="1dp" />
+        tools:layout_editor_absoluteY="93dp" />
 
     <ImageView
-        android:id="@+id/ivPhotoAddRest"
+        android:id="@+id/ivPhotoAddRecipe"
         android:layout_width="411dp"
         android:layout_height="173dp"
-        android:background="#0C4878"
+        android:background="#0B5E56"
         android:contentDescription="Recipe Logo"
         android:onClick="selectPhoto"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="433dp"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="301dp"
         tools:src="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/btnAddAddRest"
+        android:id="@+id/btnAddAddRecipe"
         android:layout_width="418dp"
         android:layout_height="41dp"
-        android:background="#00BCD4"
+        android:background="#FFFFFF"
         android:onClick="add"
         android:shadowColor="#00BCD4"
         android:text="ADD PHOTO"
@@ -80,6 +52,6 @@
         android:textColorHighlight="#3F51B5"
         android:textColorHint="#3F51B5"
         android:textColorLink="#3F51B5"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="606dp" />
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="474dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

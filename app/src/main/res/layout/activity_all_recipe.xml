@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AllRecipeActivity">
+    tools:context=".AllRecipesActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -60,7 +60,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:onClick="gotoAddRecipe"/>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -87,7 +88,8 @@
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/rvRecipesAllRecipe"
-        app:layout_constraintTop_toBottomOf="@+id/bottom" />
+        app:layout_constraintTop_toBottomOf="@+id/bottom"
+        android:onClick="gotoAddRecipe"/>
 
     <ImageView
         android:id="@+id/imageView5"
@@ -109,6 +111,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom1"
-        tools:text="Dinner" />
+        tools:text="Dinner"
+        android:onClick="gotoAddRecipe"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

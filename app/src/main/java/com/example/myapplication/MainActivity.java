@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText etUsername, etPassword, etConfirmPassword;
+    private EditText etUsername, etPassword;
     private FirebaseAuth auth;
     private Utilities utils;
     private FirebaseServices fbs;
@@ -46,16 +46,15 @@ public class MainActivity extends AppCompatActivity {
     private void connectComponent() {
         etUsername = findViewById(R.id.etUsernameMain);
         etPassword = findViewById(R.id.etPasswordMain);
-        etConfirmPassword = findViewById(R.id.etConfirmPasswordMain);
         utils = Utilities.getInstance();
         fbs = FirebaseServices.getInstance();
     }
 
 
+
     public void login(View view) {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
-        String confirmpassword = etConfirmPassword.getText().toString();
         if (username.trim().isEmpty() || password.trim().isEmpty()) {
             Toast.makeText(this, "Username or password is missing", Toast.LENGTH_SHORT).show();
             return;
@@ -78,22 +77,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void gotoSignup(View view) {
-        Intent i = new Intent(this, SignupActivity.class);
-        startActivity(i);
-    }
-
-    public void gotoAddRecipe(View view) {
-        Intent i = new Intent(this, AddRecipeActivity.class);
-        startActivity(i);
-    }
-
     public void gotoAllRecipes(View view) {
-
-        Intent i = new Intent(this, AllRecipesActivity.class);
+        Intent i = new Intent(MainActivity.this, AllRecipesActivity.class);
         startActivity(i);
     }
-
 }
 
 
