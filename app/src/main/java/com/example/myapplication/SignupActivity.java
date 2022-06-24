@@ -2,15 +2,16 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 
 public class SignupActivity extends AppCompatActivity {
@@ -28,8 +29,8 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void connectComponent() {
-        etUsername = findViewById(R.id.etUsernameSignup);
-        etPassword = findViewById(R.id.etPasswordSignup);
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
         utils = Utilities.getInstance();
         fbs = FirebaseServices.getInstance();
     }

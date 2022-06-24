@@ -1,12 +1,13 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -62,6 +64,7 @@ public class AddRecipeActivity extends AppCompatActivity {
 
     }
 
+
     public void add(View view) {
            // CHECK IF ANY FIELD IS EMPTY:
         String address , photo , phone , description , name , category;
@@ -103,6 +106,7 @@ public class AddRecipeActivity extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), 40);
     }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 40) {
@@ -123,77 +127,88 @@ public class AddRecipeActivity extends AppCompatActivity {
             }
         }
     }
-
-
-        private void uploadImage(){
-    if (filePath != null) {
-
-        ProgressDialog progressDialog
-                = new ProgressDialog(this);
-        progressDialog.setTitle("Uploading...");
-        progressDialog.show();
-
-        StorageReference ref
-                = storageReference
-                .child(
-                        "images/"
-                                + UUID.randomUUID().toString());
-
-                ref.putFile(filePath).addOnSuccessListener(
-                    new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(
-                                UploadTask.TaskSnapshot taskSnapshot)
-                        {
-
-
-                            progressDialog.dismiss();
-                            Toast
-                                    .makeText(AddRecipeActivity.this,
-                                            "Image Uploaded!!",
-                                            Toast.LENGTH_SHORT)
-                                    .show();
-                        }
-                    })
-
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@androidx.annotation.NonNull Exception e)
-                    {
-
-                        // Error, Image not uploaded
-                        progressDialog.dismiss();
-                        Toast
-                                .makeText(AddRecipeActivity.this,
-                                        "Failed " + e.getMessage(),
-                                        Toast.LENGTH_SHORT)
-                                .show();
+    private void showDialouge(){
+        new AlertDialog.Builder(this)
+                .setTitle("Alert")
+                .setMessage("Are you sure ?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Continue with delete operation
                     }
                 })
-                .addOnProgressListener(
-                        new OnProgressListener<UploadTask.TaskSnapshot>() {
 
-                            // Progress Listener for loading
-                            // percentage on the dialog box
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
 
-                        @Override
-                        public void onProgress(
-                                UploadTask.TaskSnapshot taskSnapshot)
-                        {
-                            double progress
-                                    = (100.0
-                                    * taskSnapshot.getBytesTransferred()
-                                    / taskSnapshot.getTotalByteCount());
-                            progressDialog.setMessage(
-                                    "Uploaded "
-                                            + (int) progress + "%");
-                        }
 
-                    });
+        private void uploadImage() {
+            if (filePath != null) {
+
+                ProgressDialog progressDialog
+                        = new ProgressDialog(this);
+                progressDialog.setTitle("Uploading...");
+                progressDialog.show();
+
+                StorageReference ref
+                        = storageReference
+                        .child(
+                                "images/"
+                                        + UUID.randomUUID().toString());
+
+                ref.putFile(filePath).addOnSuccessListener(
+                                new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(
+                                            UploadTask.TaskSnapshot taskSnapshot) {
+
+
+                                        progressDialog.dismiss();
+                                        Toast
+                                                .makeText(AddRecipeActivity.this,
+                                                        "Image Uploaded!!",
+                                                        Toast.LENGTH_SHORT)
+                                                .show();
+                                    }
+                                })
+
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@androidx.annotation.NonNull Exception e) {
+
+                                // Error, Image not uploaded
+                                progressDialog.dismiss();
+                                Toast
+                                        .makeText(AddRecipeActivity.this,
+                                                "Failed " + e.getMessage(),
+                                                Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+                        })
+                        .addOnProgressListener(
+                                new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                                    // Progress Listener for loading
+                                    // percentage on the dialog box
+
+                                    @Override
+                                    public void onProgress(
+                                            UploadTask.TaskSnapshot taskSnapshot) {
+                                        double progress
+                                                = (100.0
+                                                * taskSnapshot.getBytesTransferred()
+                                                / taskSnapshot.getTotalByteCount());
+                                        progressDialog.setMessage(
+                                                "Uploaded "
+                                                        + (int) progress + "%");
+                                    }
+
+                                });
+
 
             }
 
 
+        }
     }
-
-}

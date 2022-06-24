@@ -31,11 +31,14 @@ public class RecipeDetailsActivity extends AppCompatActivity
 
     }
     private void connectComponents() {
+        /*
         etName = findViewById(R.id.etNameRecipeDetails);
         etDesc = findViewById(R.id.etDescRecipeDetails);
         etAddress = findViewById(R.id.etAddressRecipeDetails);
         etPhone = findViewById(R.id.etPhoneRecipeDetails);
         ivPhoto = findViewById(R.id.ivPhotoRecipeDetails);
+        */
+
     }
 }
 

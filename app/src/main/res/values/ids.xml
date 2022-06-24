@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="open_dialog" type="id" />
+    <item name="etNameAddRecipe" type="id" />
+    <item name="etDescriptionAddRecipe" type="id" />
+    <item name="etAddressAddRecipe" type="id" />
+    <item name="etPhoneAddRecipe" type="id" />
+    <item name="spFoodsAddRecipe" type="id" />
+    <item name="ivPhotoAddRecipe" type="id" />
+</resources>
