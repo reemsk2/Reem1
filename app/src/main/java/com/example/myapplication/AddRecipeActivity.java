@@ -211,9 +211,4 @@ public class AddRecipeActivity extends AppCompatActivity {
 
 
         }
-
-    public void gotoAddRecipe(View view) {
-        Intent i = new Intent(this, AllRecipesActivity.class);
-        startActivity(i);
     }
-}

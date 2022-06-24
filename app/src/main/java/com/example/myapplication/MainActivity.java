@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
@@ -35,12 +36,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         connectComponent();
         getSupportActionBar().hide();
+    }
 
-
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = fbs.getAuth().getCurrentUser();
+        if (currentUser != null)
+            gotoAllRecipes(null);
     }
 
     private void connectComponent() {
@@ -55,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     public void login(View view) {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
+
         if (username.trim().isEmpty() || password.trim().isEmpty()) {
             Toast.makeText(this, "Username or password is missing", Toast.LENGTH_SHORT).show();
             return;
@@ -79,6 +85,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void gotoAllRecipes(View view) {
         Intent i = new Intent(MainActivity.this, AllRecipesActivity.class);
+        startActivity(i);
+    }
+    public void gotoSignup(View view) {
+        Intent i = new Intent(this, SignupActivity.class);
+        startActivity(i);
+    }
+
+    public void gotoAddRest(View view) {
+        Intent i = new Intent(this, AddRecipeActivity.class);
         startActivity(i);
     }
 }
