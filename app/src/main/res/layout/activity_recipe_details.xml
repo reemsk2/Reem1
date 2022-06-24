@@ -6,4 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".RecipeDetailsActivity">
 
+    <ImageView
+        android:id="@+id/ivPhotoRecipeDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        tools:layout_editor_absoluteX="142dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvNameRecipeDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="65dp"
+        android:text="name..."
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPhoneRestDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="41dp"
+        android:text="phone..."
+        app:layout_constraintStart_toStartOf="@+id/ivPhotoRecipeDetails"
+        app:layout_constraintTop_toBottomOf="@+id/ivPhotoRecipeDetails" />
+
+    <TextView
+        android:id="@+id/tvDescriptionRecipeDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:text="Description..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameRecipeDetails" />
+
+    <TextView
+        android:id="@+id/tvAddressRestDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:text="address..."
+        app:layout_constraintStart_toStartOf="@+id/tvCategoryRestDetails"
+        tools:layout_editor_absoluteY="187dp" />
+
+    <TextView
+        android:id="@+id/tvCategoryRestDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="category..."
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="251dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

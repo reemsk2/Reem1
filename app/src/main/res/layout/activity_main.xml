@@ -58,20 +58,6 @@
         app:layout_constraintTop_toBottomOf="@+id/etPasswordMain" />
 
     <Button
-        android:id="@+id/btnAllRecipeMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="373dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="32dp"
-        android:onClick="gotoAllRecipes"
-        android:text="All Recipes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPasswordMain">
-
-    </Button>
-    <Button
         android:id="@+id/btnSignupMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,7 +65,7 @@
         android:layout_marginEnd="61dp"
         android:layout_marginBottom="46dp"
         android:backgroundTint="#034545"
-        android:onClick="gotoSignup"
+        android:onClick="gotoAllRecipes"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
