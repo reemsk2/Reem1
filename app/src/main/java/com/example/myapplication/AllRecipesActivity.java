@@ -43,7 +43,7 @@ public class AllRecipesActivity extends AppCompatActivity {
         myCallback = new MyCallback() {
             @Override
             public void onCallback(List<Recipe> restsList) {
-                RecyclerView recyclerView = findViewById(R.id.rvRecipesAllRecipe);
+                RecyclerView recyclerView = findViewById(R.id.rvAllRecipe);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 adapter = new AdapterRecipe(getApplicationContext(), recipes);
                 recyclerView.setAdapter(adapter);
@@ -66,24 +66,14 @@ public class AllRecipesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            //case R.id.miSearch:
-            // User chose the "Settings" item, show the app settings UI...
-            //return true;
-
             case R.id.miProfile:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
                 return true;
 
             case R.id.miSettings:
-
                 return true;
 
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
-
         }
     }
 
