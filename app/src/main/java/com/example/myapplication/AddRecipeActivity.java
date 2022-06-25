@@ -42,12 +42,11 @@ public class AddRecipeActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
-
-        getSupportActionBar().hide();
         connectComponents();
     }
 
@@ -133,10 +132,8 @@ public class AddRecipeActivity extends AppCompatActivity {
                 .setMessage("Are you sure ?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // Continue with delete operation
                     }
                 })
-
                 .setNegativeButton(android.R.string.no, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();

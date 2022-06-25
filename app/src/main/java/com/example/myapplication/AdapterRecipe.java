@@ -50,7 +50,7 @@ public class AdapterRecipe extends RecyclerView.Adapter<AdapterRecipe.ViewHolder
     public void onBindViewHolder(AdapterRecipe.ViewHolder holder, int position) {
         Recipe recipe = mData.get(position);
         holder.tvName.setText(recipe.getName());
-        //Picasso.get().load(recipe.getPhoto()).into(holder.ivPhoto);
+       // Picasso.get().load(recipe.getPhoto()).into(holder.ivPhoto);
     }
     @Override
     public int getItemCount() {
@@ -86,7 +86,6 @@ public class AdapterRecipe extends RecyclerView.Adapter<AdapterRecipe.ViewHolder
         this.mClickListener = itemClickListener;
     }
 
-    // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }

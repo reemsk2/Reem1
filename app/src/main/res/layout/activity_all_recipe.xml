@@ -55,13 +55,13 @@
         android:layout_height="0dp"
         android:layout_marginBottom="204dp"
         android:backgroundTint="#094981"
+        android:onClick="gotoAddRecipe"
         android:text="BreakFast"
         app:layout_constraintBottom_toTopOf="@+id/bottom1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:onClick="gotoAddRecipe"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -84,12 +84,12 @@
         android:layout_marginEnd="244dp"
         android:layout_marginBottom="209dp"
         android:backgroundTint="#094981"
+        android:onClick="gotoAddRecipe"
         android:text="Lunch"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/rvAllRecipe"
-        app:layout_constraintTop_toBottomOf="@+id/bottom"
-        android:onClick="gotoAddRecipe"/>
+        app:layout_constraintTop_toBottomOf="@+id/bottom" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -107,11 +107,11 @@
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="9dp"
         android:backgroundTint="#094981"
+        android:onClick="gotoAddRecipe"
         android:text="Dinner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom1"
-        tools:text="Dinner"
-        android:onClick="gotoAddRecipe"/>
+        tools:text="Dinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
